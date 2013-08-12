@@ -14,8 +14,7 @@
 /// center has been appropriately relocated.
 
 /// An extension of the K-Means algorithm.
-class PyrKMeans : KMeans
-{
+class PyrKMeans: KMeans {
 public:
 private:
 };

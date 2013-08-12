@@ -1,9 +1,9 @@
 /*/////////////////////////////
-// K-Means Library
-// Author: Matt Brock
-// Date: 08-28-2007
-// Last Updated: 09-25-2007
-/////////////////////////////*/
+ // K-Means Library
+ // Author: Matt Brock
+ // Date: 08-28-2007
+ // Last Updated: 09-25-2007
+ /////////////////////////////*/
 
 #include "space.hxx"
 
@@ -15,43 +15,41 @@
 /// cluster centers.
 
 /// A basic class for the K-Means algorithm.
-class KMeans
-{
+class KMeans {
 public:
 	KMeans();
-	KMeans( int k, double terminationThreshold, Space * space );
+	KMeans(int k, double terminationThreshold, Space * space);
 	~KMeans();
 
-		/// Add a number of randomly placed clusters to the list.
-	int AddClusterList( int numClusters );
-		/// Return the number of clusters in this space.
+	/// Add a number of randomly placed clusters to the list.
+	int AddClusterList(int numClusters);
+	/// Return the number of clusters in this space.
 	int ClusterSize();
-		/// Clear the space of all cluster center points
+	/// Clear the space of all cluster center points
 	int DeleteClusters();
-		/// Get the list of clusters
+	/// Get the list of clusters
 	list<Cluster *> GetClusters();
 
-		/// Set the space for the K-Means algorithm to operate in.
-	int SetSpace( Space * space );
+	/// Set the space for the K-Means algorithm to operate in.
+	int SetSpace(Space * space);
 
-		/// Run the Group(), Shift(), and Merge() functions until the
-		/// shifting threshold has been met.
+	/// Run the Group(), Shift(), and Merge() functions until the
+	/// shifting threshold has been met.
 	int Run();
-		/// Return the average distance from the points in space to
-		/// their respective clusters.
+	/// Return the average distance from the points in space to
+	/// their respective clusters.
 	double Evaluate();
 
-
 protected:
-		/// Place the points into the nearest cluster and return the
-		/// standard deviation of the points using the cluster center
-		/// as the mean.
+	/// Place the points into the nearest cluster and return the
+	/// standard deviation of the points using the cluster center
+	/// as the mean.
 	Coordinate Group();
-		/// Shift the cluster center to the average of all of its
-		/// points.
+	/// Shift the cluster center to the average of all of its
+	/// points.
 	double Shift();
 
-		/// The random number generator
+	/// The random number generator
 	RNG rng;
 	Coordinate * boundaryA;
 	Coordinate * boundaryB;
