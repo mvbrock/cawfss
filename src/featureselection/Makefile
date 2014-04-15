@@ -6,7 +6,7 @@ LIB_NAME = featureselection
 INC_DIR = ../../include
 LIB_DIR = ../../lib
 OBJ_DIR = ../../objects
-CXXFLAGS=-g03 -I$(INC_DIR)/clusteranalysis
+CXXFLAGS=-g03 -fPIC -I$(INC_DIR)/clusteranalysis
 LDFLAGS=-L$(LIB_DIR) -lclusteranalysis
 
 FILE_SRC = \

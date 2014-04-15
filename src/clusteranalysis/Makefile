@@ -8,7 +8,7 @@ INC_DIR = ../../include
 LIB_DIR = ../../lib
 OBJ_DIR = ../../objects
 
-CXXFLAGS=-g03
+CXXFLAGS=-g03 -fPIC
 
 FILE_SRC = \
 	cluster.cxx \
