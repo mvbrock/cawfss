@@ -1,0 +1,3 @@
+#!/bin/bash
+ls ~/cawfss/results/extracted_data/*.csv | awk '{printf("echo `head -n 1 %s` ! %s\n",$1,$1)}' | sh | sed 's/ //g' | sed 's/!/ / g' | awk '{printf("%s ~/cawfss/results/csv/stepwise_%s %s\n",$2,substr($2,44,length($2)),$1)}' | awk '{split($3,colarr,",");subsetSize=(6*length(colarr))/7;split($1,arr,"_");val=arr[length(arr)];printf("~/cawfss/featureselection/stepwise_app -f %s -o %s -d 1 -m 5 -t 0.0 -z %d -x %d -c %d -v %d -y 0.3 -e 0 -j 1.0 -q 1.0\n",$1,$2,(500000/val)-100,(500000/val)+100,subsetSize,subsetSize);}' > stepwise_run_benchmark_all.sh
+chmod +x stepwise_run_benchmark_all.sh

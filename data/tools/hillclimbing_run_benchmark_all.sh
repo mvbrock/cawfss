@@ -1,0 +1,1 @@
+~/cawfss/featureselection/hillclimbing_app -f /home/mb1381/cawfss/results/extracted_data/basicmath_small_1000.csv -o ~/cawfss/results/csv/hillclimbing_basicmath_small_1000.csv -d 1 -z 40 -x 60 -c 19 -v 19 -y 0.3 -e 0 -j 1.0 -q 1.0

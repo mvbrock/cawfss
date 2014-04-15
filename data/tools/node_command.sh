@@ -1,0 +1,10 @@
+ssh c0-0 $1
+ssh c0-1 $1
+ssh c0-2 $1
+ssh c0-3 $1
+ssh c0-4 $1
+ssh c0-5 $1
+ssh c0-6 $1
+ssh c0-7 $1
+ssh c0-8 $1
+ssh c0-9 $1
