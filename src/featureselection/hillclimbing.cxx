@@ -95,9 +95,9 @@ FeatureResults HillClimbing::ForwardSelect()
 	list<int> possibleFeatureSubset = currentFeatureSubset;
 	int subsetSize = possibleFeatureSubset.size();
 
-		// Create a list of feature subset candidates, aka
-		// features that aren't already in the current
-		// feature subset.
+	// Create a list of feature subset candidates, aka
+	// features that aren't already in the current
+	// feature subset.
 	list<int> featureSubsetCandidateList;
 	for(int i = 0; i < data->GetFeatureList().size(); i++)
 	{
@@ -115,8 +115,8 @@ FeatureResults HillClimbing::ForwardSelect()
 		return bestEvaluation;
 	}
 	
-		// The feature that was added to the subset to see if the
-		// subset achieved a better evaluation.
+	// The feature that was added to the subset to see if the
+	// subset achieved a better evaluation.
 	int addedFeatureIndex;
 	int bestFeatureIndex = featureSubsetCandidateList.front();
 	
@@ -147,9 +147,9 @@ FeatureResults HillClimbing::BackwardEliminate()
 	list<int> possibleFeatureSubset = currentFeatureSubset;
 	int subsetSize = possibleFeatureSubset.size();
 	
-		// If our feature subset size is 1, there is no need
-		// to evaluate a 0 sized subset, so just zero out
-		// our results and return them.
+	// If our feature subset size is 1, there is no need
+	// to evaluate a 0 sized subset, so just zero out
+	// our results and return them.
 	if( subsetSize == 1 )
 	{
 		return Evaluate( possibleFeatureSubset );

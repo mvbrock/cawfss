@@ -15,24 +15,24 @@
 class FeatureData
 {
 public:
-		/// Construct the class
+	/// Construct the class
 	FeatureData();
-		/// Construct the class, loading a file containing comma-seperated values (CSV format) into memory.
+	/// Construct the class, loading a file containing comma-seperated values (CSV format) into memory.
 	FeatureData( const string filename);
-		/// Deconstruct the class.
+	/// Deconstruct the class.
 	~FeatureData();
-		/// Return the number of features in the data.
+	/// Return the number of features in the data.
 	int GetFeatureCount();
-		/// Return the list of feature names in the data.
+	/// Return the list of feature names in the data.
 	vector<char *> GetFeatureList();
-		/// Create a new space containing the data points specified by the feature subset.
+	/// Create a new space containing the data points specified by the feature subset.
 	Space * CreateSpace( list<int> featureSubset );
-		/// Load a file containing comma-seperated values (CSV format) into memory.
+	/// Load a file containing comma-seperated values (CSV format) into memory.
 	int LoadFeatureData( const string filename );
 private:
-		// The feature names.
+	// The feature names.
 	vector<char *> featureList;
-		// The feature data.
+	// The feature data.
 	list<Coordinate *> data;
 };
 

@@ -46,7 +46,7 @@ IsoData::~IsoData()
 
 int IsoData::Run()
 {
-		// If we don't have any dimensions, then we don't have any points!
+	// If we don't have any dimensions, then we don't have any points!
 	if( space->GetDimension() == 0 )
 		return 0;
 
@@ -138,8 +138,8 @@ int IsoData::Merge()
 				firstIter != secondIter &&
 				clusterList.size() > kMin )
 			{
-					// Create our new cluster containing all of the points
-					// from the two clusters.
+				// Create our new cluster containing all of the points
+				// from the two clusters.
 				int dimension = (*firstIter)->GetDimension();
 				
 				Coordinate averageCoord = (firstCoord+secondCoord)/Coordinate::Singular(2,dimension);

@@ -32,17 +32,17 @@ FeatureResults FeatureSelection::Evaluate( list<int> possibleFeatureSubset )
 {
 	FeatureResults results;
 	
-	// Sort the feature subset and convert it to a string.
+    // Sort the feature subset and convert it to a string.
 	possibleFeatureSubset.sort();
 	string featureListString = FeatureListToString(possibleFeatureSubset);
-	// Search for the results in the cache, otherwise, evaluate the possible feature subset.
+    // Search for the results in the cache, otherwise, evaluate the possible feature subset.
 	map< string, FeatureResults >::iterator resultsCacheIter = resultsCache.find( featureListString );
 	if( resultsCacheIter != resultsCache.end() )
 	{
-		// If so, retrieve the results from the cache
+	    // If so, retrieve the results from the cache
 		results = (*resultsCacheIter).second;
 		subsequentCacheAccessCounter++;
-		// If the subsequent cache access counter exceeds the size of the cache, 
+	    // If the subsequent cache access counter exceeds the size of the cache, 
 		if( subsequentCacheAccessCounter > resultsCache.size() )
 			cacheExhausted = true;
 		results.SetIsCached( true );
@@ -71,12 +71,12 @@ FeatureResults FeatureSelection::Evaluate( list<int> possibleFeatureSubset )
 
 			for(int j = kRangeMin; j <= kRangeMax; j++)
 			{
-					// Retrieve the evaluation (within/between)
+				// Retrieve the evaluation (within/between)
 				KMeans kmeans( j, terminationThreshold, space );
 				kmeans.Run();
 				kmeans.Evaluate(within,between);
 				
-					// Set the current evaluation.
+				// Set the current evaluation.
 				currentEvaluation.SetClusters( bestK );
 				currentEvaluation.SetWithinBetween( within, between );
 				currentEvaluation.SetFeatureSubset( possibleFeatureSubset );

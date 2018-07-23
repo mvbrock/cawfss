@@ -60,7 +60,7 @@ bool Space::AddPointList( list<Coordinate *> & pointList )
 	while( iter != pointList.end() )
 	{
 		this->pointList.push_back( *iter );
-			// Check for dimension inequalities within the coordinates.
+		// Check for dimension inequalities within the coordinates.
 		if( this->dimension != (*iter)->GetDimension() )
 		{
 			cerr << "AddPointList(): Mistmatched dimensions: " << dimension << ", " << (*iter)->GetDimension() << endl;
@@ -109,11 +109,11 @@ int Space::Normalize()
 {
 	list<Coordinate *>::iterator iter = pointList.begin();
 	vector<double> greatestCoordinateData = (*iter)->GetCoordinateData();
-		// Iterate through all of the points
+	// Iterate through all of the points
 	while( iter != pointList.end() )
 	{
 		Coordinate * coordinate = (*iter);
-			// Create a vector which will represent our 
+		// Create a vector which will represent our 
 		vector<double> coordinateData = coordinate->GetCoordinateData();
 		for(int i = 0; i < coordinateData.size(); i++)
 		{

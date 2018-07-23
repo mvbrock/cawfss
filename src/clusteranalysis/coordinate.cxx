@@ -78,7 +78,7 @@ int Coordinate::Boundarize()
 	{
 		if( coordinateData[i] <= 0 )
 			coordinateData[i] = 0.001;
-			// TODO, create a > operator!
+		// TODO, create a > operator!
 		if( 1 <= coordinateData[i] )
 			coordinateData[i] = 0.999;
 	}
@@ -280,8 +280,8 @@ Coordinate Coordinate::Average(list<Coordinate *> coordList, int dimension)
 {
 	list<Coordinate *>::iterator iter = coordList.begin();
 
-		// Create a Coordinate object to total up all of the coordinates
-		// in the coordList list.
+	// Create a Coordinate object to total up all of the coordinates
+	// in the coordList list.
 	Coordinate total = Coordinate::Singular( 0, dimension );
 	if( coordList.size() == 0 )
 		return total;

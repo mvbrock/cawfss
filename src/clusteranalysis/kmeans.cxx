@@ -36,8 +36,8 @@ KMeans::~KMeans()
 
 int KMeans::AddClusterList( int numClusters )
 {
-		// Create a number of randomly placed clusters within the
-		// space and push them onto the cluster list.
+	// Create a number of randomly placed clusters within the
+	// space and push them onto the cluster list.
 	for( int i = 0; i < numClusters; i++ )
 	{
 		Cluster * cluster = new Cluster( *space,
@@ -48,7 +48,7 @@ int KMeans::AddClusterList( int numClusters )
 
 int KMeans::DeleteClusters()
 {
-		// Clear the cluster list while deleting each cluster object.
+	// Clear the cluster list while deleting each cluster object.
 	for( int i = clusterList.size(); i > 0; i-- )
 	{
 		Cluster * cluster = clusterList.front();
@@ -59,19 +59,19 @@ int KMeans::DeleteClusters()
 
 int KMeans::ClusterSize()
 {
-		// Return how many clusters exist.
+	// Return how many clusters exist.
 	return clusterList.size();
 }
 
 list<Cluster *> & KMeans::GetClusters()
 {
-		// Return the list of clusters.
+	// Return the list of clusters.
 	return clusterList;
 }
 
 int KMeans::SetSpace( Space * space )
 {
-		// Set the space for the K-Means algorithm to operate in.
+	// Set the space for the K-Means algorithm to operate in.
 	this->space = space;
 	Coordinate p1 = Coordinate::Singular( 0, space->GetDimension() );
 	Coordinate p2 = Coordinate::Singular( 1, space->GetDimension() );
@@ -80,7 +80,7 @@ int KMeans::SetSpace( Space * space )
 
 int KMeans::Run()
 {
-		// If we don't have any dimensions, then we don't have any points!
+	// If we don't have any dimensions, then we don't have any points!
 	if( space->GetDimension() == 0 )
 		return 0;
 	double distortionDelta = terminationThreshold + 1;
@@ -137,20 +137,20 @@ double KMeans::Group()
 
 	list<Coordinate *> pointList = this->space->GetPoints();
 	list<Coordinate *>::iterator coordIter = pointList.begin();
-		// Iterate through the list of points in space.
+	// Iterate through the list of points in space.
 	while( coordIter != pointList.end() )
 	{
 		
-			// Set our best distance to be the maximum possible
-			// distance between two points in the space.
+		// Set our best distance to be the maximum possible
+		// distance between two points in the space.
 		double bestDistance = this->maxDistance;
 		double curDistance;
 
 		clusterIter = clusterList.begin();
 		Cluster * closestCluster = (*clusterIter);
 		
-			// Iterate through the list of clusters, looking
-			// for the cluster center closest to the point.
+		// Iterate through the list of clusters, looking
+		// for the cluster center closest to the point.
 		while( clusterIter != clusterList.end() )
 		{
 			Coordinate clusterCenter = (*clusterIter)->GetClusterCenter();
@@ -165,8 +165,8 @@ double KMeans::Group()
 			}
 			++clusterIter;
 		}
-			// Add the point to the cluster with the closest
-			// center.
+		// Add the point to the cluster with the closest
+		// center.
 		closestCluster->AddPoint( (*coordIter) );
 		++coordIter;
 	}

@@ -23,7 +23,7 @@ bool ClusterData::LoadFeatureData(	const string & filename,
 
 	if( loadFeatureList == true )
 	{
-			// Get the header data
+		// Get the header data
 		while( c != '\n' && !in.eof() )
 		{
 			in.get(c);
@@ -42,19 +42,19 @@ bool ClusterData::LoadFeatureData(	const string & filename,
 			}
 		}
 	}
-		// Get the rest of the data
+	// Get the rest of the data
 	unsigned int coordinateId = 0;
 	while(!in.eof())
 	{
 		vector<double> coordinateData;
 		c = 0;
-			// Process a line in the file
+		// Process a line in the file
 		while( c != '\n' && !in.eof() )
 		{
 			double value;
 			in.get( c );
-				// A comma or a \n denotes the end of a field value, so we
-				// stop adding characters to strValue and convert it to a double.
+			// A comma or a \n denotes the end of a field value, so we
+			// stop adding characters to strValue and convert it to a double.
 			if( c == ',' || c == '\n' )
 			{
 				value = strtod( strValue.c_str(), NULL );

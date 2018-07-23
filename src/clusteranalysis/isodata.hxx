@@ -31,21 +31,21 @@ public:
 	
 	virtual ~IsoData();
 	
-		/** \brief Run the ISODATA algorithm.
-		  *
-		  * Run the Group(), Shift(), Eliminate(), Merge(), and
-		  * Split(), functions until the shifting threshold has
-		  * been met.
-		  */
+	/** \brief Run the ISODATA algorithm.
+	  *
+	  * Run the Group(), Shift(), Eliminate(), Merge(), and
+	  * Split(), functions until the shifting threshold has
+	  * been met.
+	  */
 	int Run();
 	
-		/** \brief Return the current cluster count.
-		  *
-		  * Return the median current cluster count.  This value should be
-		  * within kMin and kMax.
-		  *
-		  * \return The current cluster count.
-		  */
+	/** \brief Return the current cluster count.
+	  *
+	  * Return the median current cluster count.  This value should be
+	  * within kMin and kMax.
+	  *
+	  * \return The current cluster count.
+	  */
 	int GetClusterCount();
 	
 	int GetEliminateCount() { return eliminateCount; }
@@ -53,13 +53,13 @@ public:
 	int GetSplitCount() { return splitCount; }
 	
 protected:
-		// Eliminate clusters that have less than minPoints points
+	// Eliminate clusters that have less than minPoints points
 	int Eliminate();
-		// Merge clusters whose distance between eachother is lower
-		// than the mergeThreshold.
+	// Merge clusters whose distance between eachother is lower
+	// than the mergeThreshold.
 	int Merge();
-		// Split a cluster whose standard deviation exceeds the
-		// splitThreshold.
+	// Split a cluster whose standard deviation exceeds the
+	// splitThreshold.
 	int Split();
 
 	int eliminateCount;

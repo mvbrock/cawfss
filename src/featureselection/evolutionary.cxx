@@ -72,7 +72,7 @@ FeatureResults Evolutionary::Step( int direction )
 	list<FeatureResults> populationEvaluation;
 	vector< list<int> >::iterator memberIter = currentPopulation.begin();
 	
-	// Evaluate each member of the population
+// Evaluate each member of the population
 	while( memberIter != currentPopulation.end() )
 	{
 		FeatureResults result;
@@ -81,7 +81,7 @@ FeatureResults Evolutionary::Step( int direction )
 		memberIter++;
 	}
 	
-	// Sort the evaluated populations and remove the worst-evaluated members.
+// Sort the evaluated populations and remove the worst-evaluated members.
 	populationEvaluation.sort();
 	for(int i = 0; i < currentPopulation.size() - survivingPopulationSize; i++)
 	{
@@ -90,10 +90,10 @@ FeatureResults Evolutionary::Step( int direction )
 
 	currentPopulation.clear();
 
-		// Convert the list to a vector so we can grab random members
-		// and procreate.
-		// TODO: Find a better way to do this so we don't have to
-		// create copies of the surviving population.
+	// Convert the list to a vector so we can grab random members
+	// and procreate.
+	// TODO: Find a better way to do this so we don't have to
+	// create copies of the surviving population.
 	vector< list<int> > survivingMembers;
 	list<FeatureResults>::iterator resultIter = populationEvaluation.begin();
 	while( resultIter != populationEvaluation.end() )
@@ -130,23 +130,23 @@ list<int> Evolutionary::GenerateRandomMember()
 
 	if( data->GetFeatureCount() != 0 )
 	{
-			// The size of our member will be between the
-			// subsetSizeMax and subsetSizeMin.
+		// The size of our member will be between the
+		// subsetSizeMax and subsetSizeMin.
 		int subsetSize = ( r.rand_int() % ( subsetSizeMax -
 					subsetSizeMin + 1 ) ) + subsetSizeMin;
 		for(int i = 0; i < subsetSize; i++)
 		{
 			int memberValue;
-				// Loop until we find a member value that
-				// hasn't been selected for the member yet.
+			// Loop until we find a member value that
+			// hasn't been selected for the member yet.
 			do
 			{
 				memberValue = r.rand_int() %
 						data->GetFeatureCount();
 			} while( selectedFeatures.find( memberValue ) != selectedFeatures.end() );
 			
-				// Push back the member value and indicate
-				// that it has been used.
+			// Push back the member value and indicate
+			// that it has been used.
 			member.push_back( memberValue );
 			selectedFeatures[ memberValue ] = true;
 		}
@@ -157,11 +157,11 @@ list<int> Evolutionary::GenerateRandomMember()
 
 list<int> Evolutionary::Procreate( list<int> memberOne, list<int> memberTwo )
 {
-		// Merge the two lists together
+	// Merge the two lists together
 	list<int> member = memberOne;
 	member.merge( memberTwo );
 		
-		// Remove any duplicate features.
+	// Remove any duplicate features.
 	map<int,bool> uniqueFeatures;
 	list<int>::iterator memberIter = member.begin();
 	while( memberIter != member.end() )
@@ -177,20 +177,20 @@ list<int> Evolutionary::Procreate( list<int> memberOne, list<int> memberTwo )
 		member.push_back( (*mapIter).first );
 		mapIter++;
 	}
-		// Sort the list of unique features.
+	// Sort the list of unique features.
 	member.sort();
 	
-		// Determine the size of the combined subset
+	// Determine the size of the combined subset
 	int subsetSize = ( r.rand_int() % ( subsetSizeMax -
 				subsetSizeMin + 1 ) ) + subsetSizeMin;
-		// The subset size determines how many features we will
-		// remove from the combined members.
+	// The subset size determines how many features we will
+	// remove from the combined members.
 	int removalCount = member.size() - subsetSize;
 	int numRemoved = 0;
 	memberIter = member.begin();
 	while( numRemoved < removalCount && removalCount > 0 && member.size() > 0 )
 	{
-			// Flip a coin
+		// Flip a coin
 		if( r.uniform() < 0.50 )
 		{
 			numRemoved++;
@@ -207,16 +207,16 @@ list<int> Evolutionary::Procreate( list<int> memberOne, list<int> memberTwo )
 
 void Evolutionary::MutateMember( list<int> & member )
 {
-		// Decide whether or not to mutate the member.
+	// Decide whether or not to mutate the member.
 	if( r.uniform() > mutationCoefficient )
 		return;
 
-		// For now the probability of an add or a removal
-		// is statically set at 0.5
+	// For now the probability of an add or a removal
+	// is statically set at 0.5
 	bool addFeature = r.rand_int() % 2;
 	bool removeFeature = r.rand_int() % 2;
 
-		// Map the member's features.	
+	// Map the member's features.	
 	map<int,bool> memberFeatures;
 	list<int>::iterator memberIter = member.begin();
 	while( memberIter != member.end() )
@@ -225,28 +225,28 @@ void Evolutionary::MutateMember( list<int> & member )
 		memberIter++;
 	}
 
-		// If we need to add a feature and the size of the list is less than the maximum size.
+	// If we need to add a feature and the size of the list is less than the maximum size.
 	if( addFeature == true && member.size() < this->subsetSizeMax )
 	{
 		int featureToAdd;
-			// Generate random indices until we get a feature
-			// that doesn't exist in the member.
+		// Generate random indices until we get a feature
+		// that doesn't exist in the member.
 		do
 		{
 			featureToAdd = r.rand_int() %
 						data->GetFeatureCount();
 		} while( memberFeatures[ featureToAdd ] == true );
-			// Add this feature.
+		// Add this feature.
 		member.push_back( featureToAdd );
 	}
-		// If we need to remove a feature and the size of the list is greater than the minimum size.
+	// If we need to remove a feature and the size of the list is greater than the minimum size.
 	if( removeFeature == true && member.size() > this->subsetSizeMin )
 	{
 		int featureToRemove;
-			// Generate random indices until we get a feature
-			// that exists in the member.
-			// MORE EFFICIENT: RANDOMLY CHOOSE ONE OF THE
-			// MEMBER FEATURES VIA AN INDEX
+		// Generate random indices until we get a feature
+		// that exists in the member.
+		// MORE EFFICIENT: RANDOMLY CHOOSE ONE OF THE
+		// MEMBER FEATURES VIA AN INDEX
 		do
 		{
 			featureToRemove = r.rand_int() %
@@ -254,8 +254,8 @@ void Evolutionary::MutateMember( list<int> & member )
 		} while( memberFeatures[ featureToRemove ] != true );
 		
 		memberIter = member.begin();
-			// Search through the member features until we find
-			// that feature to remove.
+		// Search through the member features until we find
+		// that feature to remove.
 		while( memberIter != member.end() )
 		{
 			if( (*memberIter) == featureToRemove )
@@ -267,6 +267,6 @@ void Evolutionary::MutateMember( list<int> & member )
 		}
 	}
 	assert(member.size() >= subsetSizeMin && member.size() <= subsetSizeMax);
-		// Sort at the end.
+	// Sort at the end.
 	member.sort();
 }

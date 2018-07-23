@@ -21,21 +21,18 @@ using namespace std;
   * also has several methods that can transform a point or list of points inside of
   * a space.
   */
-
-
-
 class Coordinate
 {
 public:
-		/** \brief Constructs the coordinate class.
-		  *
-		  */
+	/** \brief Constructs the coordinate class.
+	  *
+	  */
 	Coordinate();
-		/** \brief Constructs the coordinate class.
-		  *
-		  * Sets the coordinate vector for the class.
-		  * \param coordinateData The coordinate vector.
-		  */
+	/** \brief Constructs the coordinate class.
+	  *
+	  * Sets the coordinate vector for the class.
+	  * \param coordinateData The coordinate vector.
+	  */
 	Coordinate( vector<double> & coordinateData, unsigned int id );
 	~Coordinate();
 

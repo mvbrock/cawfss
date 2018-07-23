@@ -28,38 +28,38 @@ public:
 	Space( int dimension, list<Coordinate *> & pointList );
 	virtual ~Space();
 
-		/// Add a coordinate specifying a data point
+	/// Add a coordinate specifying a data point
 	bool AddPoint( Coordinate * point );
-		/// Add a list of coordinates specifying multiple data points.
+	/// Add a list of coordinates specifying multiple data points.
 	bool AddPointList( list<Coordinate *> & pointList );
-		/// Add a list of coordinates, from a CSV file, specifying multiple data points.
+	/// Add a list of coordinates, from a CSV file, specifying multiple data points.
 	int AddPointList( char * filename );
-		/// Clear the space of all data points
+	/// Clear the space of all data points
 	int ClearPoints();
-		/// Clear the space of all data points and delete the
-		/// data points from memory.
+	/// Clear the space of all data points and delete the
+	/// data points from memory.
 	int DeletePoints();
-		/// Retrieve the list of points.
+	/// Retrieve the list of points.
 	list<Coordinate *> & GetPoints();
 
-		/// Normalize the data to [0,1]
+	/// Normalize the data to [0,1]
 	int Normalize();
-		/// Place any point exceeding the [0,1] boundary on the boundary.
+	/// Place any point exceeding the [0,1] boundary on the boundary.
 	int Boundarize();
 
-		/// Get the dimension of the space
+	/// Get the dimension of the space
 	int GetDimension();
-		/// Set the dimension of the space
+	/// Set the dimension of the space
 	int SetDimension( int dimension );
 
 	
-		/// Print out the coordinates in the space;
+	/// Print out the coordinates in the space;
 	void Print();
 
-		/// How many points are in this space.
+	/// How many points are in this space.
 	int Size();
 
-		/// Does each point have the right number of dimensions?
+	/// Does each point have the right number of dimensions?
 	bool HasValidPoints();
 protected:
 	bool isCluster;

@@ -11,36 +11,36 @@ class Stepwise : public HillClimbing
 public:
 
 	Stepwise( string outputFilename );
-		/** \brief 
-		  *
-		  */
+	/** \brief 
+	  *
+	  */
 	int Initialize( int direction );
 
-		/** \brief
-		  *
-		  */
+	/** \brief
+	  *
+	  */
 	FeatureResults Run();
 
-		/** \brief
-		  *
-		  */
+	/** \brief
+	  *
+	  */
 	FeatureResults Step( int direction );
 	
-		/** \brief
-		  *
-		  */
+	/** \brief
+	  *
+	  */
 	void SetBacktrack( unsigned int max, double threshold );
 protected:
-		// The direction being faced when running through the feature space.
+	// The direction being faced when running through the feature space.
 	int facing;
-		// The maximum number of steps the algorithm can move backwards
-		// through the feature space.
+	// The maximum number of steps the algorithm can move backwards
+	// through the feature space.
 	unsigned int backtrackMax;
-		// The evaluation delta required to move backwards.
+	// The evaluation delta required to move backwards.
 	double backtrackThreshold;
-		// The cache for already traversed nodes.
+	// The cache for already traversed nodes.
 	vector< map<string, FeatureResults> > resultsCache;
-		// The vector of best results for each level.
+	// The vector of best results for each level.
 	vector< FeatureResults > bestResults;
 
 };

@@ -27,36 +27,36 @@ public:
 	KMeans( int k, double terminationThreshold, Space * space );
 	virtual ~KMeans();
 
-		/// Add a number of randomly placed clusters to the list.
+	/// Add a number of randomly placed clusters to the list.
 	int AddClusterList( int numClusters );
-		/// Return the number of clusters in this space.
+	/// Return the number of clusters in this space.
 	int ClusterSize();
-		/// Clear the space of all cluster center points
+	/// Clear the space of all cluster center points
 	int DeleteClusters();
-		/// Get the list of clusters
+	/// Get the list of clusters
 	list<Cluster *> & GetClusters();
 
-		/// Set the space for the K-Means algorithm to operate in.
+	/// Set the space for the K-Means algorithm to operate in.
 	int SetSpace( Space * space );
 
-		/// Run the Group(), Shift(), and Merge() functions until the
-		/// shifting threshold has been met.
+	/// Run the Group(), Shift(), and Merge() functions until the
+	/// shifting threshold has been met.
 	int Run();
-		/// Return the average distance from the points in space to
-		/// their respective clusters.
+	/// Return the average distance from the points in space to
+	/// their respective clusters.
 	void Evaluate( double & within, double & between );
 
 
 protected:
-		/// Place the points into the nearest cluster and return the
-		/// standard deviation of the points using the cluster center
-		/// as the mean.
+	/// Place the points into the nearest cluster and return the
+	/// standard deviation of the points using the cluster center
+	/// as the mean.
 	double Group();
-		/// Shift the cluster center to the average of all of its
-		/// points.
+	/// Shift the cluster center to the average of all of its
+	/// points.
 	double Shift();
 
-		/// The random number generator
+	/// The random number generator
 	RNG rng;
 	Coordinate * boundaryA;
 	Coordinate * boundaryB;
